@@ -1,5 +1,5 @@
 
-// Intermediate Algorithm Scripting: Spinal Tap Case
+// Intermediate Algorithm Scripting: Spinal Tap Case (from FCC)
 // Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 // IMPORTANT: Regex
 
