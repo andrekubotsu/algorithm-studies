@@ -100,5 +100,55 @@ function pairElement(str) {
 // test here
 pairElement("GCG");
 
+//=============================================================
+// Intermediate Algorithm Scripting: Missing letters (from FCC)
+//=============================================================
 
+// You will create a program that will find the missing letter from a string and return it. 
+// If there is no missing letter, the program should return undefined. There is currently no test case 
+// for the string missing more than one letter, but if there was one, recursion would be used. Also, the 
+// letters are always provided in order so there is no need to sort them.
+
+function fearNotLetter(str) {
+  for (var i = 0; i < str.length; i++) {
+    /* code of current character */
+    var code = str.charCodeAt(i);
+
+    /* if code of current character is not equal to first character + no of iteration
+        hence character has been escaped */
+    if (code !== str.charCodeAt(0) + i) {
+      /* if current character has escaped one character find previous char and return */
+      return String.fromCharCode(code - 1);
+    }
+  }
+  return undefined;
+}
+
+// test here
+fearNotLetter("abce");
+
+//==========================================================
+// Intermediate Algorithm Scripting: Sorted Union (from FCC)
+//==========================================================
+
+// Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+// In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+// The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+// Check the assertion tests for examples.
+
+function uniteUnique(...arr) {
+  let newArr = [];
+  // the arguments are arrays, take all the arguments
+  for (let i = 0; i < arr.length; i++){
+    newArr = newArr.concat(arr[i])
+  };
+  // filter the array to remove duplicates
+  let uniqueArr = newArr.filter(function(item, pos){
+    return newArr.indexOf(item) == pos;
+  });
+
+  return uniqueArr;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
