@@ -153,8 +153,10 @@ function uniteUnique(...arr) {
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
 
-// Intermediate Algorithm Scripting: Convert HTML Entities
 
+//===================================================================
+// Intermediate Algorithm Scripting: Convert HTML Entities (from FCC)
+//===================================================================
 
 function convertHTML(str) {
   // Use Object Lookup to declare as many HTML entities as needed.
@@ -174,5 +176,68 @@ function convertHTML(str) {
 
 // test here
 convertHTML("Dolce & Gabbana");
+
+
+
+//===========================================================================
+// Intermediate Algorithm Scripting: Sum All Odd Fibonacci Numbers (from FCC)
+//===========================================================================
+
+function sumFibs(num) {
+  // Perform checks for the validity of the input
+  if (num <= 0) return 0;
+
+  // Create an array of fib numbers till num
+  const arrFib = [1, 1];
+  let nextFib = 0;
+
+  // We put the new Fibonacci numbers to the front so we
+  // don't need to calculate the length of the array on each
+  // iteration
+  while ((nextFib = arrFib[0] + arrFib[1]) <= num) {
+    arrFib.unshift(nextFib);
+  }
+
+  // We filter the array to get the odd numbers and reduce them to get their sum.
+  return arrFib.filter(x => x % 2 != 0).reduce((a, b) => a + b);
+}
+
+// test here
+sumFibs(4);
+
+//============================================================
+// Intermediate Algorithm Scripting: Sum All Primes (from FCC)
+//============================================================
+
+// PS.: Sieve of Eratosthenes code from Ted Hopp (stackoverflow)
+
+function sumPrimes(num) {
+  let sum;
+
+  // find all the prime numbers: 2 divisors only 1 and itself
+  function getPrimes(max) {
+    var sieve = [], i, j, primes = [];
+    for (i = 2; i <= max; ++i) {
+        if (!sieve[i]) {
+            // i has not been marked -- it is prime
+            primes.push(i);
+            for (j = i << 1; j <= max; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
+  }
+
+  let primesArr = getPrimes(num);
+  
+  // sum all primes
+  sum = primesArr.reduce((a, b) => a+b);
+    
+  return sum;
+}
+
+sumPrimes(10);
+
 
 
