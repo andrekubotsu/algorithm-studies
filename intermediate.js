@@ -303,4 +303,25 @@ function steamrollArray(val,flatArr=[]) {
 }
 steamrollArray([1, [2], [3, [[4]]]]);
 
+//================================================================
+// Intermediate Algorithm Scripting: Arguments Optional (from FCC)
+//================================================================
 
+/* It can be quite complicated to understand what needs to be done. There are always many ways to do something 
+   when coding but regardless of the algorithm used, we have to create a program that does the following:
+
+ - It has to add two numbers passed as parameters and return the sum.
+ - It has to check if any of the numbers are actual numbers, otherwise return undefined and stop the program right there.
+ - It has to check if it has one or two arguments passed. More are ignored.
+ - If it has only one argument then it has to return a function that uses that number and expects another one, to then add it. */
+
+function addTogether(first, second) {
+  if (typeof first !== "number") {
+    return undefined;
+  }
+  const sum = second =>
+    typeof second === "number" ? first + second : undefined;
+  return typeof second === "undefined" ? second => sum(second) : sum(second);
+}
+// test here
+addTogether(2, 3);
