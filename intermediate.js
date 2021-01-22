@@ -33,6 +33,49 @@ function translatePigLatin(str) {
 
 translatePigLatin("consonant");
 
+//==============================================
+// Intermediate from CoderByte: Tree Constructor
+//==============================================
+
+function TreeConstructor(strArr) { 
+// 1. parents have at most 2 children; parents = { parent: [child1, child2]}
+// 2. each child has at most parent; children = { child: parent }
+// 3. Iterate across strArr and check all conditions remain true
+
+  // code goes here
+  let parents = {};
+  let children = {};
+
+  for (let i = 0; i < strArr.length; i++){
+    // "(1,2)" => ["1", "2"]
+    let pair = strArr[i].replace(/[()]/g, "").split(",");
+    let child  = pair[0];
+    let parent = pair[1];
+
+    if(parents[parent]){
+      parents[parent].push(child)
+    } else {
+      parents[parent] = [child]
+    }
+
+    if(parents[parent].length > 2) {
+      return false;
+    }
+
+    if(children[child]){
+      return false;
+    } else {
+      children[child] = parent;
+    }
+  }
+  
+  return true; 
+
+}
+   
+// keep this function call here 
+console.log(TreeConstructor(readline()));
+
 //================================================================
 // Intermediate Algorithm Scripting: Search and Replace (from FCC)
 //================================================================
